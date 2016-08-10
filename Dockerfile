@@ -13,5 +13,8 @@ RUN chmod 755 /*.sh
 # Xdebug environment variables
 ENV XDEBUG_PORT 9000
 
+# Add more debugging in wordpress
+RUN find / -name "wp-config.php" -print0 | xargs -0 sed "s/define('WP_DEBUG', false);/define('WP_DEBUG', true);/g" -i
+
 EXPOSE 80 3306 
 CMD ["/run_wordpress_xdebug.sh"]

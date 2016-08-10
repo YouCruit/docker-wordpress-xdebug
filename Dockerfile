@@ -16,5 +16,9 @@ ENV XDEBUG_PORT 9000
 # Add more debugging in wordpress
 RUN find / -name "wp-config.php" -print0 | xargs -0 sed "s/define('WP_DEBUG', false);/define('WP_DEBUG', true);/g" -i
 
+# Output emails to console (docker logs)
+RUN echo -e '#!/bin/bash\necho ARGS: "$*";echo; echo; cat' >/usr/sbin/sendmail
+RUN chmod a+rx /usr/sbin/sendmail
+
 EXPOSE 80 3306 
 CMD ["/run_wordpress_xdebug.sh"]

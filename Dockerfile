@@ -1,5 +1,5 @@
 FROM kaihofstetter/wordpress-cli:latest
-MAINTAINER Kai Hofstetter <kai.hofstetter@gmx.de>
+MAINTAINER Tobias <tobias@youcruit.com>
 
 # Install plugins
 RUN apt-get update && \

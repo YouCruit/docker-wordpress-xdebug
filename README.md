@@ -13,7 +13,7 @@ The MySQL database is accessible from the host.
 1. Run WordPress
 
     ```
-    docker run --name my-wordpress -v /path/to/host/wordpress_sources:/wordpress_sources -p 80:80 -d kaihofstetter/wordpress-xdebug
+    docker run --name my-wordpress -v /path/to/host/wordpress_sources:/wordpress_sources -p 80:80 -d youcruit/wordpress-xdebug
     ```
     
     **Very important!
@@ -34,6 +34,14 @@ The MySQL database is accessible from the host.
     
     Password: 'secret'
 
+
+### Plugin development
+
+Replace first point above with the following line. The first directory should be where the index.php
+    ```
+    docker run --rm -it --name my-wordpress -p 80:80 -p 3306:3306 -v <path to plugin in development>:/wordpress_sources/wp-content/plugins/<plugin-name>/ youcruit/docker-wordpress-xdebug
+    ```
+
 ### Using Xdebug
  1. Configure your IDE to listen on port 9000 for Xdebug, or the port you configured via the XDEBUG_PORT environment variable.
  2. Set the source path for debugging in your IDE to the configured '/path/to/host/wordpress_sources'
@@ -49,7 +57,7 @@ WordPress needs to know the site URL used by the host, because WordPress redirec
 1. Run WordPress
 
     ```
-    docker run --name my-wordpress -v /path/to/host/wordpress_sources:/wordpress_sources -p 8080:80 -e WP_URL="localhost:8080" -d kaihofstetter/wordpress-xdebug
+    docker run --name my-wordpress -v /path/to/host/wordpress_sources:/wordpress_sources -p 8080:80 -e WP_URL="localhost:8080" -d youcruit/wordpress-xdebug
     ```
 2. Access WordPress
 
@@ -61,7 +69,7 @@ WordPress needs to know the site URL used by the host, because WordPress redirec
 Run WordPress with mapped MySQL port 3306:
 
 ```
-docker run --name my-wordpress -p 80:80 -p 3306:3306 -d kaihofstetter/wordpress-xdebug
+docker run --name my-wordpress -p 80:80 -p 3306:3306 -d youcruit/wordpress-xdebug
 ```
 
 The MySQL database is accessible via ```port 3306```, ```user: WordPress``` and ```password: secret```.

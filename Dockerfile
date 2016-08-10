@@ -3,7 +3,7 @@ MAINTAINER Kai Hofstetter <kai.hofstetter@gmx.de>
 
 # Install plugins
 RUN apt-get update && \
-    apt-get -y install php5-xdebug
+    apt-get -y install php5-xdebug php5-curl
     
 # Add configuration script
 ADD config_xdebug.sh /config_xdebug.sh

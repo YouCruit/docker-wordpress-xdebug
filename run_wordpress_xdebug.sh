@@ -12,4 +12,6 @@ if [ -d /wordpress_sources ] && [ ! -f /wordpress_sources_moved ]; then
     touch /wordpress_sources_moved
 fi
 
+tail -f /var/log/apache2/error.log &
+
 ./run.sh
